@@ -1,0 +1,51 @@
+package com.finance.mybank.account.dto;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.finance.mybank.auth_user.dto.UserDTO;
+import com.finance.mybank.enums.AccountStatus;
+import com.finance.mybank.enums.AccountType;
+import com.finance.mybank.enums.Currency;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Data
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@AllArgsConstructor
+@NoArgsConstructor
+public class AccountDTO {
+
+    private Long id;
+
+    private String accountNumber;
+
+    private BigDecimal balance;
+
+    private AccountType accountType;
+
+    @JsonBackReference
+    private UserDTO user;
+
+    private Currency currency;
+
+    private AccountStatus status;
+
+    @JsonManagedReference
+    private List<TransactionDTO> transactions;
+
+    private LocalDateTime closedAt;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+}

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.finance.mybank.account.dto.AccountDTO;
 import com.finance.mybank.role.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -44,6 +45,5 @@ public class UserDTO {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
-
 
 }
