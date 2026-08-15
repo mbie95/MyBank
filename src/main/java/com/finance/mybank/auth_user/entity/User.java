@@ -1,5 +1,6 @@
 package com.finance.mybank.auth_user.entity;
 
+import com.finance.mybank.account.entity.Account;
 import com.finance.mybank.role.entity.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
