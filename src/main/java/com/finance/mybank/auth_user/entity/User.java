@@ -38,6 +38,8 @@ public class User {
 
     private String password;
 
+    private String profilePictureUrl;
+
     private boolean active = true;
 
     @ManyToMany(fetch = FetchType.EAGER)

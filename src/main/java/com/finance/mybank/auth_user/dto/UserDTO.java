@@ -35,6 +35,8 @@ public class UserDTO {
     @JsonIgnore
     private String password;
 
+    private String profilePictureUrl;
+
     private boolean active;
 
     private List<Role> roles;
