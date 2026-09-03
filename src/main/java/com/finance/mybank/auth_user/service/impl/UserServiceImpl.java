@@ -13,6 +13,7 @@ import com.finance.mybank.res.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,9 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
 
-    private final String UPLOAD_DIR = "uploads/profile-pictures/";
+    @Value("${profile.pictures.directory}")
+    private String uploadDir;
+
 
     @Override
     public User getCurrentLoggedInUser() {
@@ -124,7 +127,7 @@ public class UserServiceImpl implements UserService {
         User user = getCurrentLoggedInUser();
 
         try {
-            Path uploadPath = Paths.get(UPLOAD_DIR);
+            Path uploadPath = Paths.get(uploadDir);
 
             if (!Files.exists(uploadPath)) {
                 Files.createDirectories(uploadPath);
@@ -149,7 +152,7 @@ public class UserServiceImpl implements UserService {
 
             Files.copy(file.getInputStream(), filePath);
 
-            String fileUrl = UPLOAD_DIR + newFileName;
+            String fileUrl = "profile-pictures/" + newFileName;
 
 
             user.setProfilePictureUrl(fileUrl);
