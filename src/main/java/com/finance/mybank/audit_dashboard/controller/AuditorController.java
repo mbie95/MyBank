@@ -38,7 +38,6 @@ public class AuditorController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('AUDITOR')")
     @GetMapping("/accounts")
     public ResponseEntity<AccountDTO> findAccountDetailsByAccountNumber(@RequestParam String accountNumber) {
         Optional<AccountDTO> accountDTO = auditorService.findAccountDetailsByAccountNumber(accountNumber);
