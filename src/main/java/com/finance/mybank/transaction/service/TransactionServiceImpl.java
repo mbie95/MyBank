@@ -107,6 +107,7 @@ public class TransactionServiceImpl implements TransactionService {
 
         account.setBalance(account.getBalance().add(request.getAmount()));
         transaction.setAccount(account);
+        transaction.setSourceAccount(account.getAccountNumber());
         accountRepo.save(account);
     }
 
@@ -120,6 +121,7 @@ public class TransactionServiceImpl implements TransactionService {
 
         account.setBalance(account.getBalance().subtract(request.getAmount()));
         transaction.setAccount(account);
+        transaction.setSourceAccount(account.getAccountNumber());
         accountRepo.save(account);
     }
 
